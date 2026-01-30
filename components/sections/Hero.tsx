@@ -5,11 +5,20 @@ import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-emerald-500 via-green-500 to-teal-500 text-white">
-      {/* Background blur */}
-      <div className="absolute inset-0 bg-black/10" />
+    <section className="relative h-screen w-full text-white">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('/images/470644550_122129524898467456_183228950208120216_n.jpg')",
+        }}
+      />
 
-      <div className="relative mx-auto flex min-h-[90vh] max-w-7xl flex-col items-center justify-center px-4 text-center">
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-linear-to-br from-emerald-600/60 via-green-600/50 to-teal-600/60 backdrop-blur-sm" />
+
+      <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-center px-4 text-center">
         {/* Main Heading (SEO H1) */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -48,7 +57,7 @@ export default function Hero() {
           <Button
             size="lg"
             variant="outline"
-            className="border-white px-8 text-white hover:bg-white hover:text-green-700"
+            className="border-white px-8 hover:bg-white text-green-700"
           >
             যুক্ত হোন
           </Button>
