@@ -11,11 +11,11 @@ export default function Footer() {
           <div className="max-w-sm">
             <div className="mb-4 flex items-center gap-2">
               <Image
-                src="/logo/taronneralo-logo.png"
+                src="/logo/taronneralo-logo-white.png"
                 alt="তারুণ্যের আলো সংগঠন"
-                width={36}
-                height={36}
-                className="rounded-full bg-white p-1"
+                width={100}
+                height={100}
+                className="rounded-full"
               />
               <h3 className="text-lg font-semibold">তারুণ্যের আলো সংগঠন</h3>
             </div>

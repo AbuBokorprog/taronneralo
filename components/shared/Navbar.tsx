@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "হোম", href: "/" },
@@ -14,6 +16,8 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -22,13 +26,13 @@ export default function Navbar() {
       className="sticky top-0 z-50 w-full bg-white shadow-sm"
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-        {/* Logo + Name */}
+        {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/logo/taronneralo-logo.png"
             alt="তারুণ্যের আলো সংগঠন লোগো"
-            width={48}
-            height={48}
+            width={80}
+            height={80}
             priority
           />
           <span className="text-lg font-bold tracking-wide text-green-700">
@@ -53,14 +57,61 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA */}
-        <Button
-          asChild
-          className="bg-linear-to-r from-emerald-500 to-teal-500 text-white hover:opacity-90"
+        {/* Desktop CTA */}
+        <div className="hidden md:block">
+          <Button
+            asChild
+            className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:opacity-90"
+          >
+            <Link href="/join-us">যুক্ত হোন</Link>
+          </Button>
+        </div>
+
+        {/* Mobile Hamburger */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-green-700"
+          aria-label="Toggle menu"
         >
-          <Link href="/join-us">যুক্ত হোন</Link>
-        </Button>
+          {open ? <X size={26} /> : <Menu size={26} />}
+        </button>
       </nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white shadow-inner"
+          >
+            <ul className="flex flex-col gap-4 px-6 py-6 text-sm font-medium">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="block text-gray-700 hover:text-green-600"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+
+              <Button
+                asChild
+                className="mt-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white"
+              >
+                <Link href="/join-us" onClick={() => setOpen(false)}>
+                  যুক্ত হোন
+                </Link>
+              </Button>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }

@@ -22,7 +22,7 @@ export default function DonatePage() {
           <div className="rounded-xl bg-white p-6 shadow-md hover:shadow-lg transition">
             <h3 className="font-semibold text-green-700 mb-2">Bkash</h3>
             <p className="text-gray-700">
-              01XXXXXXXXX নাম্বারে টাকা পাঠাতে পারেন। Transaction message এ
+              01822813744 নাম্বারে টাকা পাঠাতে পারেন। Transaction message এ
               লিখুন: <strong>"সহযোগিতা"</strong>
             </p>
           </div>
@@ -31,7 +31,7 @@ export default function DonatePage() {
           <div className="rounded-xl bg-white p-6 shadow-md hover:shadow-lg transition">
             <h3 className="font-semibold text-green-700 mb-2">Nagad</h3>
             <p className="text-gray-700">
-              01XXXXXXXXX নাম্বারে টাকা পাঠাতে পারেন। Transaction message এ
+              01822813744 নাম্বারে টাকা পাঠাতে পারেন। Transaction message এ
               লিখুন: <strong>"সহযোগিতা"</strong>
             </p>
           </div>
